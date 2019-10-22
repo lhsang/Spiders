@@ -22,3 +22,10 @@ def getCookieFromResponse(response):
     :return: string cookie
     """
     return str(response.headers.getlist('Set-Cookie')[0])
+
+
+def isNullObj(obj):
+    for key in obj:
+        if obj[key] is not None:
+            return False
+    return True

@@ -1,7 +1,7 @@
 import scrapy
 import json
 import re
-
+from . import isNullObj
 
 class ListScroll(scrapy.Spider):
     name = "list_infinite_scroll"
@@ -18,13 +18,6 @@ class ListScroll(scrapy.Spider):
                 return True
         return False
 
-    @classmethod
-    def isNullObj(self, obj):
-        for key in obj:
-            if obj[key] is not None:
-                return False
-        return True
-
     def parse(self, response):
         cards = response.css('.card')
         for card in cards:
@@ -33,7 +26,7 @@ class ListScroll(scrapy.Spider):
                 "title": body.css("h4.card-title a::text").get(),
                 "price": body.css("h5::text").get()
             }
-            if not self.isNullObj(obj):
+            if not isNullObj(obj):
                 self.result.append(obj)
 
         if self.isContinue(response):

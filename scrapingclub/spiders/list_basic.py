@@ -2,6 +2,7 @@ import scrapy
 from scrapy.spiders import Rule, CrawlSpider
 import re
 import json
+from . import isNullObj
 
 
 class ScrapyPage(CrawlSpider):
@@ -20,13 +21,6 @@ class ScrapyPage(CrawlSpider):
                 return True
         return False
 
-    @classmethod
-    def isNullObj(self, obj):
-        for key in obj:
-            if obj[key] is not None:
-                return False
-        return True
-
     def parse(self, response):
         self.logger.info('A response from %s just arrived!', response.url)
         for card in response.css('div.card'):
@@ -35,7 +29,7 @@ class ScrapyPage(CrawlSpider):
                 'title': body.css('h4.card-title a::text').get(),
                 'price': body.css('h5::text').get()
             }
-            if not self.isNullObj(obj):
+            if not isNullObj(obj):
                 self.result.append(obj)
 
         if self.isContinue(response):
