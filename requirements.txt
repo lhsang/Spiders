@@ -13,7 +13,7 @@ incremental==17.5.0
 loginform==1.2.0
 lxml==4.4.1
 numpy==1.17.3
-opencv-python==4.1.1.26
+opencv-python==4.2.0.32
 parsel==1.5.2
 pyasn1==0.4.7
 pyasn1-modules==0.2.7
