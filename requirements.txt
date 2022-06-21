@@ -12,7 +12,7 @@ idna==2.8
 incremental==17.5.0
 loginform==1.2.0
 lxml==4.4.1
-numpy==1.17.3
+numpy==1.22.0
 opencv-python==4.1.1.26
 parsel==1.5.2
 pyasn1==0.4.7
